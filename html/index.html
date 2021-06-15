@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Docker</title>
+</head>
+<style>
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 360px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color:coral;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+</style>
+    
+<script src="feature.js">
+    
+</script>
+
+<body style="background-color:deepskyblue;">
+
+    <h1 style="position:absolute;top: 20px;left: 390px; font-size: 60px;font-family: 'Courier New', Courier, monospace;">⚜️<u>Docker using GUI</u>⚜️</h1>
+
+    <!-- Create container Box -->
+    <div style="position: absolute; left: 10px; top: 10px;" class="flip-card">
+        
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img id="i1" src="launch_container.png" alt="Avatar" style="width: 300px;height:360px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Launch Container</h1>
+            <p style="font-size: 23px">Your image name</p><input id="c_i_name">
+            <p style="font-size: 23px">Container name</p><input id="c_c_name">
+            <br><br>
+            <button onclick="create();" style="border: red;height: 30px;font-size: 23px;width: 150px;font-weight: bolder;background-color: green;text-align: center; ">Create</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Delete container Box -->
+    <div style="position: absolute; left: 10px; top: 400px;" class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img id="i1" src="del_container.png" alt="Avatar" style="width: 300px;height:360px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Delete Container</h1>
+            <p style="font-size: 23px">Container name</p><input id="d_c_name">
+            <br><br>
+            <button onclick="del();" style="border: red;height: 30px;font-size: 23px;width: 150px;font-weight: bolder;background-color: green;text-align: center; ">Delete</button>
+          </div>
+        </div>
+      </div>
+
+    
+      <!-- List containers Box -->
+      <div style="position: absolute; right: 10px; top: 400px;" class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img id="i1" src="list_container.png" alt="Avatar" style="width: 300px;height:360px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>List all Container</h1>
+            <p style="font-size: 23px">This would list all the containers(running & stoped)</p>
+            <br><br>
+            <button onclick="list();" style="border: red;height: 30px;font-size: 23px;width: 150px;font-weight: bolder;background-color: green;text-align: center; ">List</button>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- Pull container Box -->
+    <div style="position: absolute; right: 10px; top: 10px;" class="flip-card">
+        
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img id="i1" src="pull_image.png" alt="Avatar" style="width: 300px;height:360px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Pulling Image</h1>
+            <p style="font-size: 23px">Your image name</p><input id="p_i_name">
+            <br><br>
+            <button onclick="image();" style="border: red;height: 30px;font-size: 23px;width: 150px;font-weight: bolder;background-color: green;text-align: center; ">Create</button>
+          </div>
+        </div>
+      </div>
+
+
+    <!--Message-->
+    <div style="border: red;font-size: 26px;font-weight: bolder;text-align: center;position: relative; top: 170px";>"<i> The Docker goal is to ease the creation, deploy and the delivery of an
+		    <br> application using the so called Containers. </i>" </div>
+
+    <!-- OutPut Box --> 
+      <div style="position: absolute; right: 600px; top: 300px;background-color:palevioletred;border: red solid 3px; width: 820px;right: 340px;" class="flip-card">
+      	<h1 style="position: absolute; align-content: center; left: 190px;"><u>Your would be displayed here</u></h1>
+       	<pre>
+              <div id="op" style="border: red;font-size: 22px;font-weight: bolder;text-align: center;position: relative; top: 130px";></div>
+              <div id="im" style="border: red;font-size: 22px;font-weight: bolder;position: relative; top: 130px";></div>
+      	</pre>
+
+      	<br>
+      	<br>
+      </div>
+</body>
+
+</html>
